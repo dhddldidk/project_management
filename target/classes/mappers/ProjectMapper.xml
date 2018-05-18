@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dgit.mapper.ProjectMapper">
+		<resultMap type="ProjectVO" id="ProjectResult">
+		<result property="projectNo" column="project_no"/>
+		<result property="projectTitle" column="project_title"/>
+		<result property="projectContent" column="project_content"/>
+		<result property="startdate" column="startdate"/>
+		<result property="enddate" column="enddate"/>
+		<result property="process" column="process"/>
+	</resultMap>
+	
+	<insert id="insertProject" parameterType="ProjectVO">
+		insert into project
+			(project_no, project_title, project_content, startdate, enddate, process)
+			values(#{projectNo},#{projectTitle},#{projectContent},#{startdate},#{enddate},#{process})
+	</insert>
+	
+	<select id="selectListProject" resultMap="ProjectResult">
+		select * from project order by project_no desc
+	</select>
+	
+	<select id="selectProjectById" resultMap="ProjectResult">
+		select * from project where project_no=#{number}
+	</select>
+	
+	<delete id="deleteProjectById" parameterType="int">
+		delete from project where project_no=#{number}
+	</delete>
+	
+	<update id="updateProject" parameterType="ProjectVO">
+		update project set project_title=#{projectTitle},project_content=#{projectContent},startdate=#{startdate},enddate=#{enddate},process=#{process} where project_no=#{projectNo}
+	</update>
+	
+	<select id="selectCount" resultMap="ProjectResult">
+		select count(*) from project
+	</select>
+</mapper>
