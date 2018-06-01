@@ -19,12 +19,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
+	var stDate=$("#datepicker1").val();
 	$(function() {
 		$("#datepicker1").datepicker({
-			dateFormat : "yy-mm-dd"
+			dateFormat : "yy-mm-dd",
 		});
 		$("#datepicker2").datepicker({
-			dateFormat : "yy-mm-dd"
+			dateFormat : "yy-mm-dd",
+			
 		});
 	});
 </script>
